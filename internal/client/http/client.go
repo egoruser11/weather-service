@@ -9,7 +9,7 @@ import (
 )
 
 type client struct {
-	httpClient http.Client
+	httpClient http.Clien
 }
 
 type Response struct {
