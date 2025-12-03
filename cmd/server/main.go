@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"github.com/go-co-op/gocron/v2"
-	"log"
 	"net/http"
 	"sync"
 	"time"
@@ -18,11 +17,9 @@ func main() {
 
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
-	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		_, err := w.Write([]byte("welcome"))
-		if err != nil {
-			log.Println(err)
-		}
+	r.Get("/{city}", func(w http.ResponseWriter, r *http.Request) {
+		city := chi.URLParam(r, "city")
+		fmt.Println(city)
 	})
 
 	s, err := gocron.NewScheduler()
